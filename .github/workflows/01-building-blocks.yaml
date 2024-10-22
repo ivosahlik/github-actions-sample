@@ -2,8 +2,7 @@ name: 01 - Building Blocks
 
 # https://docs.github.com/en/actions/managing-workflow-runs-and-deployments/managing-workflow-runs/manually-running-a-workflow
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   echo-hello:
