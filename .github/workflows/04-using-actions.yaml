@@ -1,7 +1,9 @@
 ame: 04 - Using Actions
 
 on:
-  workflow_dispatch
+  push:
+    branches: [ "main" ]
+#  workflow_dispatch
 
 jobs:
   build:
