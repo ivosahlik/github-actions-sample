@@ -19,6 +19,6 @@ jobs:
         with:
           node-version: '20.x'
       - name: Install Dependencies
-        run: npm ci
+        run: npm ci --package-lock-onl
       - name: Run Unit Tests
         run: npm run test
