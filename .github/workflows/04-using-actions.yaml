@@ -1,9 +1,9 @@
 name: 04 - Using Actions
 
 on:
-  push:
-    branches: [ "main" ]
-#  workflow_dispatch
+#  push:
+#    branches: [ "main" ]
+  workflow_dispatch
 
 jobs:
   build:
