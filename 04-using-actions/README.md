@@ -1,3 +1,42 @@
+# Github SignIn
+
+###### for macbook
+## install gh client, https://cli.github.com/
+brew install gh
+
+## github auth login
+ivovosahlik@Ivos-MacBook-Pro ~ % gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? HTTPS
+? Authenticate Git with your GitHub credentials? Yes
+? How would you like to authenticate GitHub CLI? Login with a web browser
+
+! First copy your one-time code: XXXX-XXXX (schovany :) )
+Press Enter to open github.com in your browser...  
+✓ Authentication complete.
+- gh config set -h github.com git_protocol https
+  ✓ Configured git protocol
+  ✓ Logged in as ivosahlik
+
+## github auth status
+ivovosahlik@Ivos-MacBook-Pro ~ % gh auth status
+github.com
+✓ Logged in to github.com account ivosahlik (keyring)
+- Active account: true
+- Git operations protocol: https
+- Token: gho_************************************
+- Token scopes: 'gist', 'read:org', 'repo', 'workflow'
+
+## show github token
+ivovosahlik@Ivos-MacBook-Pro ~ % gh auth token
+
+## set intellij idea, choose token
+
+####### for win it will be the same, is need to use some tools for it
+https://www.techielass.com/install-github-cli-on-windows/
+
+
+
 # Using Actions in Workflows
 
 This GitHub Actions workflow demonstrates how to use actions within our GitHub Actions workflow to test a React application.
