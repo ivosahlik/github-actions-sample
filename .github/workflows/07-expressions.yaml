@@ -1,0 +1,15 @@
+name: 07 - Using Expressions
+run-name: 07 - Using Expressions | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}
+
+on:
+  push:
+
+jobs:
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: '[debug] Print when triggered from main'
+        if: github.event_name == 'push'
+        run: echo "I was triggered from main"
+      - name: Greeting
+        run: echo "Hello, world"
