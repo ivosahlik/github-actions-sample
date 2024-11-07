@@ -4,7 +4,7 @@ run-name: 06 - Contexts | DEBUG - ${{ inputs.debug }}
 on:
   workflow_dispatch:
     inputs:
-      debug:
+      debug: ## in main branch
         type: boolean
         description: test input
         default: false
