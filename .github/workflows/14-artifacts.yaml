@@ -28,7 +28,7 @@ jobs:
           key: deps-node-modules-${{ hashFiles('14-artifacts/react-app/package-lock.json') }}
       - name: Install dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: npm ci
+        run: npm install
       - name: Unit tests
         run: npm run test -- --coverage
       - name: Upload test results
