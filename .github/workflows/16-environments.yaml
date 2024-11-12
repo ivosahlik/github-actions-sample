@@ -1,7 +1,7 @@
 name: 16 - Working with Environments
 
 on:
-  push:
+#  push:
   workflow_dispatch:
 
 jobs:
