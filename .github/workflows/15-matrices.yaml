@@ -1,7 +1,7 @@
 name: 15 - Working with Matrices
 
 on:
-  push:
+#  push:
   workflow_dispatch:
 
 jobs:
