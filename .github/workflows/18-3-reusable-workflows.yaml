@@ -9,7 +9,7 @@ jobs:
     with:
       target-directory: dummmy-dir
   e2e-tests:
-    uses: udemy-lauromueller/github-actions-course-example-e2e/.github/workflows/e2e.yaml@main
+    uses: ivosahlik/github-actions-sampple-e2e/.github/workflows/e2e.yaml@main
     needs: deploy
     secrets:
       access-token: ${{ secrets.GH_TOKEN }}
