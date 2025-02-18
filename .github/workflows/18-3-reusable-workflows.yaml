@@ -8,8 +8,3 @@ jobs:
     uses: ./.github/workflows/18-1-reusable-workflows.yaml
     with:
       target-directory: dummmy-dir
-  e2e-tests:
-    uses: ivosahlik/github-actions-sample-e2e/blob/main/.github/workflows/e2e.yaml@main
-    needs: deploy
-    secrets:
-      access-token: ${{ secrets.GH_TOKEN }}
