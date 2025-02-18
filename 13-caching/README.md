@@ -4,7 +4,8 @@ Caching dependencies is an effective way to make your GitHub Actions workflows f
 
 ## About Caching Workflow Dependencies
 
-Workflow runs often reuse the same outputs or downloaded dependencies from one run to another. For instance, package and dependency management tools like Maven, Gradle, npm, and Yarn keep a local cache of downloaded dependencies. To help speed up the time it takes to recreate files like dependencies, GitHub Actions can cache files you frequently use in workflows.
+Workflow runs often reuse the same outputs or downloaded dependencies from one run to another. For instance, package and dependency management tools like 
+Maven, Gradle, npm, and Yarn keep a local cache of downloaded dependencies. To help speed up the time it takes to recreate files like dependencies, GitHub Actions can cache files you frequently use in workflows.
 
 ## Caching Strategies
 
