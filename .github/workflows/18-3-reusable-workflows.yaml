@@ -8,7 +8,8 @@ jobs:
     uses: ./.github/workflows/18-1-reusable-workflows.yaml
     with:
       target-directory: dummy-dir
-  e2e-tests:
-    uses: ivosahlik/github-actions-sample-e2e/.github/workflows/e2e.yaml@main     # <owner>/<repository>/.github/workflows/<workflow-name@<version>
-    secrets:
-      access-token: ${{ secrets.GH_TOKEN }}
+#  e2e-tests:
+#    uses: ivosahlik/github-actions-sample-e2e/.github/workflows/e2e.yaml@main     # <owner>/<repository>/.github/workflows/<workflow-name@<version>
+#    needs: deploy
+#    secrets:
+#      access-token: ${{ secrets.GH_TOKEN }}
