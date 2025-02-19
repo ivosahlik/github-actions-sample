@@ -1,4 +1,4 @@
-name: matrix
+name: 27-matrix
 #on: push
 on:
   workflow_dispatch:
