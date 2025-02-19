@@ -1,4 +1,4 @@
-name: Build and push image to ECR
+name: 22-Build and push image to ECR
 
 #on: push
 on:
