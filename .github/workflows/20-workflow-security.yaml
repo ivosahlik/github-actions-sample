@@ -5,16 +5,36 @@ on:
   workflow_dispatch:
 
 jobs:
-  unsafe-pr:
+  test-no-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Get branch name
-        run: echo "Branch name is ${{ github.head_ref }}"
+        run: echo "Branch name is ${{ github.head_ref || github.ref_name }} "
       - name: Check PR title
         run: |
-          title=${{ github.event.pull_request.title }}
+          title=${{ github.head_ref || github.ref_name }} 
+          echo $title
+          if [[ $title =~ ^feat ]]; then
+            echo "PR is a feature!"
+            exit 0
+          else
+            echo "PR is not a feature"
+            exit 1
+          fi
+  unsafe-pr:
+    runs-on: ubuntu-latest
+    needs:
+      - test-no-pr
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Get branch name
+        run: echo "Branch name is ${{ github.head_ref || github.ref_name }}"
+      - name: Check PR title
+        run: |
+          title=${{ github.head_ref || github.ref_name}}
           echo $title
           if [[ $title =~ ^feat ]]; then
             echo "PR is a feature!"
@@ -25,12 +45,14 @@ jobs:
           fi
   safer-pr:
     runs-on: ubuntu-latest
+    needs:
+      - unsafe-pr
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Check PR title
         env:
-          TITLE: ${{ github.event.pull_request.title }}
+          TITLE: ${{ github.head_ref || github.ref_name}}
         run: |
           if [[ $TITLE =~ ^feat ]]; then
             echo "PR is a feature!"
@@ -41,6 +63,8 @@ jobs:
           fi
   js-safer-pr:
     runs-on: ubuntu-latest
+    needs:
+      - safer-pr
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
