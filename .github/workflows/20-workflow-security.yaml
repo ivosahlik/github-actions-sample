@@ -29,10 +29,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Get branch name
-        run: echo "Branch name is ${{ github.head_ref }}"
+        run: echo "Branch name is ${{ github.head_ref || github.ref_name }}"
       - name: Check PR title
         run: |
-          title=${{ github.event.pull_request.title }}
+          title=${{ github.head_ref || github.ref_name}}
           echo $title
           if [[ $title =~ ^feat ]]; then
             echo "PR is a feature!"
@@ -48,7 +48,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Check PR title
         env:
-          TITLE: ${{ github.event.pull_request.title }}
+          TITLE: ${{ github.head_ref || github.ref_name}}
         run: |
           if [[ $TITLE =~ ^feat ]]; then
             echo "PR is a feature!"
