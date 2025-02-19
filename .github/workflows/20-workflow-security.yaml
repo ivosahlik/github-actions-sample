@@ -5,16 +5,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  unsafe-pr:
+  test-no-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Get branch name
-        run: echo "Branch name is ${{ github.head_ref }}"
+        run: echo "Branch name is ${{ github.event.repository.default_branch }}"
       - name: Check PR title
         run: |
-          title=${{ github.event.pull_request.title }}
+          title=${{ github.event.repository.default_branch }}
           echo $title
           if [[ $title =~ ^feat ]]; then
             echo "PR is a feature!"
@@ -23,28 +23,46 @@ jobs:
             echo "PR is not a feature"
             exit 1
           fi
-  safer-pr:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Check PR title
-        env:
-          TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          if [[ $TITLE =~ ^feat ]]; then
-            echo "PR is a feature!"
-            exit 0
-          else
-            echo "PR is not a feature"
-            exit 1
-          fi
-  js-safer-pr:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Check PR title
-        uses: ./.github/actions/security-safe-input
-        with:
-          pr-title: ${{ github.event.pull_request.title }}
+#  unsafe-pr:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#      - name: Get branch name
+#        run: echo "Branch name is ${{ github.head_ref }}"
+#      - name: Check PR title
+#        run: |
+#          title=${{ github.event.pull_request.title }}
+#          echo $title
+#          if [[ $title =~ ^feat ]]; then
+#            echo "PR is a feature!"
+#            exit 0
+#          else
+#            echo "PR is not a feature"
+#            exit 1
+#          fi
+#  safer-pr:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#      - name: Check PR title
+#        env:
+#          TITLE: ${{ github.event.pull_request.title }}
+#        run: |
+#          if [[ $TITLE =~ ^feat ]]; then
+#            echo "PR is a feature!"
+#            exit 0
+#          else
+#            echo "PR is not a feature"
+#            exit 1
+#          fi
+#  js-safer-pr:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#      - name: Check PR title
+#        uses: ./.github/actions/security-safe-input
+#        with:
+#          pr-title: ${{ github.event.pull_request.title }}
