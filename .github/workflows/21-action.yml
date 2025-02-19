@@ -17,8 +17,17 @@ jobs:
           echo $GITHUB_WORKSPACE
           echo "${{ github.token }}"
 
+#      - name: Checkout
+#        uses: actions/checkout@v1
       - name: Checkout
         uses: actions/checkout@v1
+        continue-on-error: true
+        if: always()
+        with:
+          repository: ${{ github.repository }}
+          ref: ${{ github.ref }}
+        run: |
+          git checkout ${{ github.ref }} > /dev/null 2>&1
 
       - name: List Files After Checkout
         run: |
@@ -28,7 +37,7 @@ jobs:
 
       - name: Simple Javascript Action
         id: hello
-        uses: actions/hello-world-javascript-action@v1
+        uses: actions/hello-world-javascript-action@v1.   # https://github.com/actions/hello-world-javascript-action/blob/v1/action.yml
         with:
           who-to-greet: devopshint
 
