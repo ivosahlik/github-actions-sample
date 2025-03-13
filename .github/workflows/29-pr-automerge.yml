@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p ~/.m2
-          echo "AHOJ Ivo > ~/.m2/settings.xml
+          echo "AHOJ Ivo" > ~/.m2/settings.xml
           cd ~/.m2
           ls -la
           cat ~/.m2/settings.xml
