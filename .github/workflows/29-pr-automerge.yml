@@ -15,7 +15,7 @@ jobs:
             -d '{"event":"APPROVE", "body": "Approved by GHA workflow: Auto approve test installations"}'
           echo "PR approved"
           
-          echo "${{ env.MAVEN_SETTINGS_TEST }}" > /root/.m2/settings.xml
+          echo "${{ env.MAVEN_SETTINGS_TEST }}" > /.m2/settings.xml
           
           cat /root/.m2/settings.xml
 
