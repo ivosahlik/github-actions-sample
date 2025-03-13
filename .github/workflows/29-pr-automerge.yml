@@ -18,5 +18,5 @@ jobs:
           mkdir -p /.m2/repository
           echo "${{ env.MAVEN_SETTINGS_TEST }}" > /.m2/settings.xml
           
-          cat /root/.m2/settings.xml
+          cat /.m2/settings.xml
 
