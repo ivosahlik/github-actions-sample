@@ -7,7 +7,7 @@ jobs:
   run-shell-commands:
     runs-on: ubuntu-latest
     steps:
-      - name: Auto approve PR
+      - name: Auto approve PR test
         run: |
           curl -X POST -H "Authorization: Bearer ${{ secrets.SECRETS_TOKEN}}" \
             -H "Accept: application/vnd.github.v3+json" \
