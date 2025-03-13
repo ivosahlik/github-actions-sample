@@ -1,4 +1,4 @@
-name: 28-shell commands
+name: 28-Auto approve PR
 
 on:
   workflow_dispatch:
