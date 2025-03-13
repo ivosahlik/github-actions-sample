@@ -1,4 +1,4 @@
-name: 28-Auto approve PR
+name: 29-Auto approve PR
 
 on:
   workflow_dispatch:
