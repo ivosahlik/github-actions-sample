@@ -17,6 +17,8 @@ jobs:
   settings-xml:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
       - name: Auto approve PR
         shell: bash
         run: |
