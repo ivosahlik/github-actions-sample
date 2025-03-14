@@ -20,10 +20,9 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
       - name: Auto approve PR
-        shell: bash
         run: |
-          mkdir -p ~/.m2
-          echo "${{ env.MAVEN_SETTINGS_TEST}}" > ~/.m2/settings.xml
+          mkdir -p ~/.m2/repository
+          echo "${{ env.MAVEN_SETTINGS_TEST }}" > ~/.m2/settings.xml
           cd ~/.m2
           pwd
           ls -la
