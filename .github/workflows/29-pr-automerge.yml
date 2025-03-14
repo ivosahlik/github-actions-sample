@@ -27,7 +27,7 @@ jobs:
           cd ~/.m2
           pwd
           ls -la
-          cat /home/runner/.m2/settings.xml
+          cat $HOME/.m2/settings.xml
           ls -la
           echo "${{ env.MAVEN_SETTINGS_TEST}}"
 
