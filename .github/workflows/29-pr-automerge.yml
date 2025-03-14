@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p ~/.m2
-          echo "${{ env.MAVEN_SETTINGS_TEST}}" > /home/runner/.m2/settings.xml
+          echo "${{ env.MAVEN_SETTINGS_TEST}}" > $HOME/.m2/settings.xml
           cd ~/.m2
           pwd
           ls -la
