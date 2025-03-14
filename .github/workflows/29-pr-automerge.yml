@@ -29,5 +29,5 @@ jobs:
           ls -la
           cat ~/.m2/settings.xml
           ls -la
-          echo "${{ evarsnv.MAVEN_SETTINGS_TEST}}"
+          echo "${{ vars.MAVEN_SETTINGS_TEST}}"
 
