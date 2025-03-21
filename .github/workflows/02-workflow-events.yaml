@@ -3,6 +3,8 @@ name: 02 - Workflow Events
 # https://docs:github:com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows:
 on:
 #  push:
+#    tags:
+#      - r*
 #    branches: [ "main" ]
 #  pull_request:
 # https://crontab.cronhub.io/
