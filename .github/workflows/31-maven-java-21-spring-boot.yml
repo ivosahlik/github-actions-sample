@@ -21,10 +21,10 @@ jobs:
         working-directory: ${{ env.working-directory }}
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Node and NPM Dependencies
+      - name: Setup Maven and java 21
         id: setup-deps
         uses: ./.github/actions/maven-java-21-spring-boot
-      - name: Test
+      - name: Clean
         run: mvn clean
       - name: Build
         run: mvn install
