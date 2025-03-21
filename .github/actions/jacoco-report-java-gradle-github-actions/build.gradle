@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin: "jacoco"
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "junit:junit:4.13"
+}
+
+jacocoTestReport {
+    reports {
+        csv.enabled true
+    }
+}
+
+check.dependsOn jacocoTestReport
