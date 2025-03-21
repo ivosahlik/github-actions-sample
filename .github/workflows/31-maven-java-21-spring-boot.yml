@@ -5,5 +5,5 @@ on:
 
 jobs:
   build:
-    uses: ./.github/actions/maven-java-21-spring-boot
+    uses: ./.github/actions/31-maven-java-21-spring-boot
     secrets: inherit
