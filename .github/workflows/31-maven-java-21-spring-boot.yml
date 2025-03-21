@@ -28,3 +28,7 @@ jobs:
         run: mvn clean
       - name: Build
         run: mvn install
+      - name: Deploy on aws
+        run: |
+          echo "Deploy on aws"
+
