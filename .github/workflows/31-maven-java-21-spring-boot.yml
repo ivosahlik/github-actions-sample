@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check for dependency updates
         id: update-deps
-        uses: ./.github/actions/maven-java-21-spring-boot@main
+        uses: ./.github/actions/maven-java-21-spring-boot
