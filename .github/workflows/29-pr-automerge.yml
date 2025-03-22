@@ -25,6 +25,8 @@ jobs:
             https://api.github.com/repos/ivosahlik/github-actions-sample/pulls/${{ github.event.pull_request.number }}/reviews \
             -d '{"event":"APPROVE", "body": "Approved by GHA workflow: Auto approve test installations"}')
           
+          echo $RESPONSE
+          
           if [ "$RESPONSE" -eq 200 ]; then
             echo "PR approved"
             echo "Pull request [${{ github.event.pull_request.number }}](https://github.com/VFCZ-Digital/dxl-configurations/pull/${{ github.event.pull_request.number }}) is automatically approved, as there are only pre-approved files." >> $GITHUB_STEP_SUMMARY
