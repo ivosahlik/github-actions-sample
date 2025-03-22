@@ -37,6 +37,27 @@ jobs:
             echo "Failed to approve PR. HTTP status code: $RESPONSE"
             exit 1
           fi
+  auto-approve-pr-test-1-response:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto approve PR TEST 1
+        run: |
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X GET -H "Authorization: Bearer ${{ secrets.GH_TOKEN_PR_AUTOMERGE }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/ivosahlik/github-actions-sample/pulls
+          
+          echo $RESPONSE
+          
+          if [ "$RESPONSE" -eq 200 ]; then
+            echo "PR approved"
+            echo "Pull request [${{ github.event.pull_request.number }}](https://github.com/VFCZ-Digital/dxl-configurations/pull/${{ github.event.pull_request.number }}) is automatically approved, as there are only pre-approved files." >> $GITHUB_STEP_SUMMARY
+          elif [ "$RESPONSE" -eq 401 ]; then
+            echo "Bad credentials"
+            exit 1
+          else
+            echo "Failed to approve PR. HTTP status code: $RESPONSE"
+            exit 1
+          fi
 
   settings-xml:
     runs-on: ubuntu-latest
