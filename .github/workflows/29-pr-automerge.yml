@@ -44,7 +44,7 @@ jobs:
         run: |
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X GET -H "Authorization: Bearer ${{ secrets.TERRAFORM_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/ivosahlik/github-actions-sample/pulls
+            https://api.github.com/repos/ivosahlik/github-actions-sample/pulls)
           
           echo $RESPONSE
           
