@@ -50,12 +50,13 @@ jobs:
           
           if [ "$RESPONSE" -eq 200 ]; then
             echo "List pull request"
+            success()
           elif [ "$RESPONSE" -eq 401 ]; then
             echo "Bad credentials"
-            exit 1
+            failure()
           else
             echo "Failed to approve PR. HTTP status code: $RESPONSE"
-            exit 1
+            failure()
           fi
 
   settings-xml:
