@@ -30,7 +30,7 @@ jobs:
         run: |
           echo ${{ env.response }}
           
-          if [ ${{ env.response }} -eq 404 ]; then
+          if [ ${{ env.response }} -eq 200 ]; then
             echo "PR approved"
           elif [ ${{ env.response }} -eq 401 ]; then
             echo "Bad credentials"
