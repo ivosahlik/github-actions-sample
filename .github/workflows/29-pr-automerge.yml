@@ -28,6 +28,7 @@ jobs:
           echo "response=$RESPONSE" >> $GITHUB_ENV
       - name: Check response
         run: |
+          echo ${{ env.response }}
           if [ "${{ env.response }}" -eq 200 ]; then
             echo "PR approved"
           elif [ "${{ env.response }}" -eq 401 ]; then
