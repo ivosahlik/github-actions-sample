@@ -41,6 +41,11 @@ https://github.com/actions/checkout/tree/v4#readme
 
 ````
 
+# Github Actions 
+https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions
 
 # Github APi
 https://docs.github.com/en/rest/actions/artifacts?apiVersion=2022-11-28
+
+

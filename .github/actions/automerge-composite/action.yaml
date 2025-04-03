@@ -1,0 +1,17 @@
+name: Cache Node and NPM Dependencies
+description: This action allows to cache both Node and NPM dependencies based on the package-lock.json file.
+
+runs:
+  using: composite
+  steps:
+    - name: Call PR Automerge
+      id: call-pr-automerge
+      shell: bash
+      run: |
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: Bearer ${{ secrets.GH_TOKEN_PR_AUTOMERGE }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/ivosahlik/github-actions-sample/pulls/${{ github.event.pull_request.number }}/reviews \
+          -d '{"event":"APPROVE", "body": "Approved by GHA workflow: Auto approve test installations"}')
+        echo "response=$RESPONSE" >> $GITHUB_ENV
+        echo "::set-output name=response::$RESPONSE"
+
