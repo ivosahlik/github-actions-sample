@@ -4,11 +4,17 @@ inputs:
   secret:
     description: Secret
     required: true
+
+outputs:
+  installed-deps:
+    description: Whether dependencies were installed or not
+    value: ${{ steps.call-pr-automerge.outputs.response }}
+
 runs:
   using: composite
   steps:
     - name: Call PR Automerge
-      id: call-composite
+      id: call-pr-automerge
       shell: bash
       run: |
         RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: Bearer ${{ inputs.secret }}" \
