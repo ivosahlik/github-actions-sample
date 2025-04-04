@@ -124,9 +124,13 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+
       - name: Call Composite Action
         id: call-composite
         uses: ./.github/actions/automerge-composite
+        with:
+         secret: ${{ steps.call-composite.outputs.response }}
+
       - name: Use Composite Action Output
         run: |
           echo "The response code is ${{ steps.call-composite.outputs.response }}"
@@ -139,6 +143,7 @@ jobs:
             echo "Failed to approve PR. HTTP status code: ${{ steps.call-composite.outputs.response }}"
             exit 1
           fi
+
       - name: I will be skipped
         if: ${{ success() }}
         run: echo "I will print if previous steps succeed."
