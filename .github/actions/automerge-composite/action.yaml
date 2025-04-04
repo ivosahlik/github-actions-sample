@@ -24,4 +24,4 @@ runs:
         
         echo $RESPONSE
         
-        echo "response=$RESPONSE" >> $GITHUB_OUTPUT
+        echo "::set-output name=response::$RESPONSE"
