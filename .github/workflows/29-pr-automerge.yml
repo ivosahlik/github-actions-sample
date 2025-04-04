@@ -129,7 +129,7 @@ jobs:
         id: call-composite
         uses: ./.github/actions/automerge-composite
         with:
-         secret: ${{ steps.call-composite.outputs.response }}
+         secret: ${{ secrets.GH_TOKEN_PR_AUTOMERGE }}
 
       - name: Use Composite Action Output
         run: |
