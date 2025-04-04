@@ -6,7 +6,7 @@ inputs:
     required: true
 
 outputs:
-  installed-deps:
+  response:
     description: Whether dependencies were installed or not
     value: ${{ steps.call-pr-automerge.outputs.response }}
 
@@ -15,7 +15,6 @@ runs:
   steps:
     - name: Call PR Automerge
       id: call-pr-automerge
-      shell: bash
       run: |
         RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: Bearer ${{ inputs.secret }}" \
           -H "Accept: application/vnd.github.v3+json" \
@@ -24,4 +23,5 @@ runs:
         
         echo $RESPONSE
         
-        echo "::set-output name=response::$RESPONSE"
+        echo "response=$RESPONSE" >> $GITHUB_OUTPUT
+      shell: bash
