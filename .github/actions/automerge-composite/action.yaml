@@ -15,5 +15,8 @@ runs:
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/ivosahlik/github-actions-sample/pulls/${{ github.event.pull_request.number }}/reviews \
           -d '{"event":"APPROVE", "body": "Approved by GHA workflow: Auto approve test installations"}')
+        
+        echo $RESPONSE
+        
         echo "response=$RESPONSE" >> $GITHUB_ENV
         echo "::set-output name=response::$RESPONSE"
