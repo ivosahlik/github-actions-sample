@@ -24,4 +24,6 @@ runs:
         echo $RESPONSE
         
         echo "response=$RESPONSE" >> $GITHUB_OUTPUT
+
+#        echo "::set-output name=response::$RESPONSE" ## deprecated https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
       shell: bash
