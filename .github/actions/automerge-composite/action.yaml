@@ -18,5 +18,4 @@ runs:
         
         echo $RESPONSE
         
-        echo "response=$RESPONSE" >> $GITHUB_ENV
-        echo "::set-output name=response::$RESPONSE"
+        echo "response=$RESPONSE" >> $GITHUB_OUTPUT
