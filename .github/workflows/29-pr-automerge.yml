@@ -119,7 +119,7 @@ jobs:
       - name: I will execute when cancelled
         if: ${{ cancelled() }}
         run: echo "I will print if the workflow has been cancelled."
-  auto-approve-pr-test-3-response:
+  auto-approve-pr-test-3-call-composite-response:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
