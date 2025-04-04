@@ -1,0 +1,28 @@
+name: 29-Call List pull requests
+description: test
+inputs:
+  secret:
+    description: Secret
+    required: true
+
+outputs:
+  response:
+    description: Whether dependencies were installed or not
+    value: ${{ steps.list-pull-requests.outputs.response }}
+
+runs:
+  using: composite
+  steps:
+    - name: Call List pull requests
+      id: list-pull-requests
+      run: |
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X GET -H "Authorization: Bearer ${{ inputs.secret }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/ivosahlik/github-actions-sample/pulls)
+        
+        echo $RESPONSE
+        
+        echo "response=$RESPONSE" >> $GITHUB_OUTPUT
+
+#        echo "::set-output name=response::$RESPONSE" ## deprecated https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
+      shell: bash
