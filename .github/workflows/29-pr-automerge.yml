@@ -119,7 +119,7 @@ jobs:
       - name: I will execute when cancelled
         if: ${{ cancelled() }}
         run: echo "I will print if the workflow has been cancelled."
-  call-omposite-actions-test-3-call-composite-response:
+  call-automerge-composite-actions-test-3-call-composite-response:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -156,7 +156,7 @@ jobs:
       - name: I will execute when cancelled
         if: ${{ cancelled() }}
         run: echo "I will print if the workflow has been cancelled."
-  list-pull-requests-test-4-call-api:
+  call-list-pull-requests-composite-actions-test-4-call-api:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
