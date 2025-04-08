@@ -20,7 +20,7 @@ jobs:
       issues: write
     steps:
       - name: Run a one-line script
-
+        run: echo Hello, world!
       - name: Run on label bug
         if: github.event.label.name == 'bug'
         run: echo Hello, bug!
