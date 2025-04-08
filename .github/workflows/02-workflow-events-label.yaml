@@ -19,11 +19,6 @@ jobs:
     permissions:
       issues: write
     steps:
-      - name: Add comment
-        run: gh issue comment "$NUMBER" --body "$BODY"
-        env:
-          NUMBER: ${{ github.event.issue.number }}
-          BODY: >
-            This issue is available for anyone to work on.
-            **Make sure to reference this issue in your pull request.**
-            :sparkles: Thank you for your contribution! :sparkles:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world!
