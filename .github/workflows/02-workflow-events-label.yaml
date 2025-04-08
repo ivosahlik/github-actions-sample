@@ -1,0 +1,30 @@
+name: 02 - Workflow Events
+
+# https://docs:github:com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows:
+on:
+#  push:
+#    tags:
+#      - r*
+#    branches: [ "main" ]
+#  pull_request:
+# https://crontab.cronhub.io/
+#  schedule:
+#    - cron: '0 0 * * *'
+  issues:
+    types:
+      - labeled
+jobs:
+  add-comment:
+    if: github.event.label.name == 'help wanted'
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Add comment
+        run: gh issue comment "$NUMBER" --body "$BODY"
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: >
+            This issue is available for anyone to work on.
+            **Make sure to reference this issue in your pull request.**
+            :sparkles: Thank you for your contribution! :sparkles:

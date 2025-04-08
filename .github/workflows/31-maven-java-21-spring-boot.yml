@@ -36,7 +36,7 @@ jobs:
         run: mvn install
       - name: Push to Nexus repository
         run: |
-         echo "Deploy on aws"
+         echo "Push to nexus repository"
       - name: Deploy on aws
         run: |
           echo "Deploy on aws"
