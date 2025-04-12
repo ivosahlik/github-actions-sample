@@ -67,7 +67,6 @@ jobs:
           
           if [ "$RESPONSE" -eq 200 ]; then
             echo "PR approved"
-            echo "Pull request [${{ github.event.pull_request.number }}](https://github.com/VFCZ-Digital/dxl-configurations/pull/${{ github.event.pull_request.number }}) is automatically approved, as there are only pre-approved files." >> $GITHUB_STEP_SUMMARY
           elif [ "$RESPONSE" -eq 401 ]; then
             echo "Bad credentials"
             exit 1
