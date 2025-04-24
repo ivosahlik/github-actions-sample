@@ -1,4 +1,5 @@
 [![01 - Building Blocks](https://github.com/ivosahlik/github-actions-sample/actions/workflows/01-building-blocks.yaml/badge.svg)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/01-building-blocks.yaml)
+[![29-Auto approve PR](https://github.com/ivosahlik/github-actions-sample/actions/workflows/29-pr-automerge.yml/badge.svg)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/29-pr-automerge.yml)
 
 # Github docs 
 https://docs.github.com/en/actions/writing-workflows/quickstart
