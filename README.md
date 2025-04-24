@@ -1,3 +1,5 @@
+[![01 - Building Blocks](https://github.com/ivosahlik/github-actions-sample/actions/workflows/01-building-blocks.yaml/badge.svg)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/01-building-blocks.yaml)
+
 # Github docs 
 https://docs.github.com/en/actions/writing-workflows/quickstart
 
