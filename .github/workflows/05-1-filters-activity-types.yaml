@@ -9,6 +9,7 @@ on:
       - main
       - 'dev-*' # dev-new dev-this-is-new
       - 'feature/**' # feature/new feature/new/button
+      - 'releases/**-alpha' # ! character to indicate which branches should be excluded -> branches-ignore
 
 jobs:
   echo:
