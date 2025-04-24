@@ -1,6 +1,7 @@
 # This is a comment
 # Specify owners for all files
 *       @ivosahlik
+Check(@ivosahlik >= 1)
 
 # Specify owners for a specific directory
 .github/  @ivosahlik
