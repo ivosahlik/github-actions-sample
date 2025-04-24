@@ -1,5 +1,16 @@
+
+# Monitoring - add status and badge
 [![01 - Building Blocks](https://github.com/ivosahlik/github-actions-sample/actions/workflows/01-building-blocks.yaml/badge.svg)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/01-building-blocks.yaml)
+
 [![29-Auto approve PR](https://github.com/ivosahlik/github-actions-sample/actions/workflows/29-pr-automerge.yml/badge.svg)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/29-pr-automerge.yml)
+
+[![10 - Controlling the Execution Flow](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml/badge.svg)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml)
+
+[![10 - Controlling the Execution Flow](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml/badge.svg?branch=main)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml)
+
+[![10 - Controlling the Execution Flow](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml/badge.svg?event=push)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml)
+
+
 
 # Github docs 
 https://docs.github.com/en/actions/writing-workflows/quickstart
