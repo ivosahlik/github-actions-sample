@@ -8,8 +8,7 @@
 
 [![10 - Controlling the Execution Flow](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml/badge.svg?branch=main)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml)
 
-[![10 - Controlling the Execution Flow](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml/badge.svg?event=push)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml)
-
+[![10 - Controlling the Execution Flow](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml/badge.svg?branch=main&event=create)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/10-execution-flow.yaml)
 
 
 # Github docs 
