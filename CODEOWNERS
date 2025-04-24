@@ -1,6 +1,6 @@
 # This is a comment
 # Specify owners for all files
-*       @ivosahlik
+*       @ivosahlik @AppiveeDevs
 
 # Specify owners for a specific directory
 .github/  @ivosahlik
