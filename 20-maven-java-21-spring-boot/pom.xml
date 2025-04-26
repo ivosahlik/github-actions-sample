@@ -31,6 +31,35 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<configuration>
+					<from>
+						<image>eclipse-temurin:21-jre-alpine</image>
+					</from>
+					<to>
+						<image>docker.io/ivosahlik/${project.artifactId}:${project.version}</image>
+					</to>
+					<allowInsecureRegistries>true</allowInsecureRegistries>
+					<container>
+						<mainClass>cz.ivosahlik.githubactions.Application</mainClass>
+						<labels>
+							<APP_VERSION>${project.version}</APP_VERSION>
+							<app_version>${project.version}</app_version>
+							<built_by>jib</built_by>
+						</labels>
+					</container>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

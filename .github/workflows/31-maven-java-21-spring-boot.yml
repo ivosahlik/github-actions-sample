@@ -34,9 +34,10 @@ jobs:
         run: mvn clean
       - name: Build
         run: mvn install
-      - name: Push to Nexus repository
+      - name: Push to Docker repository
         run: |
-         echo "Push to nexus repository"
+          echo "Push to nexus repository"
+          mvn jib:build
       - name: Deploy on aws
         run: |
           echo "Deploy on aws"
