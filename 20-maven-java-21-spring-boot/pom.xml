@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>cz.ivosahlik</groupId>
 	<artifactId>maven-java-21-spring-boot</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>maven-java-21-spring-boot</name>
 	<packaging>jar</packaging>
 	<description>GIthub Actions Web Application</description>
