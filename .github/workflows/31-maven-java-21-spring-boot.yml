@@ -69,7 +69,7 @@ jobs:
 
       # Build the Java application
       - name: Build with Maven
-        run: mvn -B clean package --file pom.xml
+        run: mvn clean package
 
       # Log in to Docker Hub
       - name: Log in to Docker Hub
