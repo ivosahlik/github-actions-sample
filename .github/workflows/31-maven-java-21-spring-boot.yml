@@ -73,6 +73,14 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
 
+      - name: Install xq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip install yq
+
+      - name: Verify xq installation
+        run: xq --version
       - name: Extract project name from pom.xml
         id: extract-name
         run: |
