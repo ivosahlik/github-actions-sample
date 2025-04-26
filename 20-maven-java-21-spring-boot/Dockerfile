@@ -1,5 +1,5 @@
 # Use an official OpenJDK 17 runtime as a base image
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 # Set the working directory inside the container
 WORKDIR /app
 # Copy the Spring Boot application JAR file into the container
