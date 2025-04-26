@@ -73,6 +73,23 @@ jobs:
       - name: Build with Maven
         run: mvn clean package
 
+#      - name: Extract artifactId
+#        id: extract-artifactId
+#        run: |
+#          PROJECT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
+#          echo "project_name=$PROJECT_NAME" >> $GITHUB_ENV
+#
+#      - name: Extract version
+#        id: extract-version
+#        run: |
+#          PROJECT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+#          echo "project_version=$PROJECT_VERSION" >> $GITHUB_ENV
+#
+#      - name: Use extracted values
+#        run: |
+#          echo "Artifact ID: ${{ env.project_name }}"
+#          echo "Version: ${{ env.project_version }}"
+
       - name: Install xq
         run: |
           sudo apt-get update
