@@ -1,4 +1,4 @@
-name: Build and Push Docker Image with Jib
+name: 32. Build and Push Docker Image with Jib
 
 on:
   push:
