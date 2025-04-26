@@ -20,7 +20,7 @@ on:
 env:
   working-directory: 20-maven-java-21-spring-boot
 jobs:
-  build:
+  buildA:
     runs-on: ubuntu-latest
     defaults:
       run:
