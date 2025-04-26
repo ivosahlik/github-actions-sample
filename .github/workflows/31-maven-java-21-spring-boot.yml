@@ -51,7 +51,7 @@ on:
     branches:
       - main
 env:
-  working-directory: ./20-maven-java-21-spring-boot
+  working-directory: home/runner/work/github-actions-sample/20-maven-java-21-spring-boot
 jobs:
   build:
     runs-on: ubuntu-latest
