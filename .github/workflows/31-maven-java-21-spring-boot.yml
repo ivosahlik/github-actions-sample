@@ -1,12 +1,13 @@
+name: 31. Build and Push Docker Image
 
-#on:
+on:
 #  #  push:
 #  #    branches: [ "main" ]
 #  #  pull_request:
 #  # https://crontab.cronhub.io/
 #  #  schedule:
 #  #    - cron: '0 0 * * *'
-#  workflow_dispatch:
+  workflow_dispatch:
 #    inputs:
 #      target-env:
 #        description: Which environment to target for dependency installation
@@ -14,16 +15,6 @@
 #        options:
 #          - dev
 #          - prod
-
-
-
-name: 31. Build and Push Docker Image
-
-on:
-  workflow_dispatch:
-#  push:
-#    branches:
-#      - main
 env:
   working-directory: 20-maven-java-21-spring-boot
 jobs:
@@ -35,10 +26,9 @@ jobs:
     steps:
       # Checkout the code
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Set up Java
-      - uses: actions/checkout@v4
       - name: Setup Maven and java 21
         id: setup-deps
         uses: ./.github/actions/maven-java-21-spring-boot
