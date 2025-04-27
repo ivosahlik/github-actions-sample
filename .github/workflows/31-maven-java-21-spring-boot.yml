@@ -1,6 +1,4 @@
-#name: 31. Release
-#run-name: 31. Release - Composite | env - ${{ inputs.target-env }}
-#
+
 #on:
 #  #  push:
 #  #    branches: [ "main" ]
@@ -16,31 +14,6 @@
 #        options:
 #          - dev
 #          - prod
-#
-#env:
-#  working-directory: 20-maven-java-21-spring-boot
-#jobs:
-#  buildA:
-#    runs-on: ubuntu-latest
-#    defaults:
-#      run:
-#        working-directory: ${{ env.working-directory }}
-#    steps:
-#      - uses: actions/checkout@v4
-#      - name: Setup Maven and java 21
-#        id: setup-deps
-#        uses: ./.github/actions/maven-java-21-spring-boot
-#      - name: Clean
-#        run: mvn clean
-#      - name: Build
-#        run: mvn install
-#      - name: Push to Docker repository
-#        run: |
-#          echo "Push to nexus repository"
-#          mvn jib:build
-#      - name: Deploy on aws
-#        run: |
-#          echo "Deploy on aws"
 
 
 
@@ -126,4 +99,11 @@ jobs:
       # Push the Docker image
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.project_name }}:${{ env.project_version }}
+  deploy-to-aws:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy on aws
+        run: |
+          echo "Deploy on aws"
+
 
