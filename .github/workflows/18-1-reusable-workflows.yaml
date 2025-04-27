@@ -33,9 +33,9 @@ jobs:
         run: |
           echo "Deploying build artifacts"
           echo "url=https://www.google.com" >> "$GITHUB_OUTPUT"
-deploy:
+  print-output:
     runs-on: ubuntu-latest
-    needs: build
+    needs: deploy
     steps:
       - name: Print Outputs
         run: |
