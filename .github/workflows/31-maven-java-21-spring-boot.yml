@@ -1,0 +1,129 @@
+#name: 31. Release
+#run-name: 31. Release - Composite | env - ${{ inputs.target-env }}
+#
+#on:
+#  #  push:
+#  #    branches: [ "main" ]
+#  #  pull_request:
+#  # https://crontab.cronhub.io/
+#  #  schedule:
+#  #    - cron: '0 0 * * *'
+#  workflow_dispatch:
+#    inputs:
+#      target-env:
+#        description: Which environment to target for dependency installation
+#        type: choice
+#        options:
+#          - dev
+#          - prod
+#
+#env:
+#  working-directory: 20-maven-java-21-spring-boot
+#jobs:
+#  buildA:
+#    runs-on: ubuntu-latest
+#    defaults:
+#      run:
+#        working-directory: ${{ env.working-directory }}
+#    steps:
+#      - uses: actions/checkout@v4
+#      - name: Setup Maven and java 21
+#        id: setup-deps
+#        uses: ./.github/actions/maven-java-21-spring-boot
+#      - name: Clean
+#        run: mvn clean
+#      - name: Build
+#        run: mvn install
+#      - name: Push to Docker repository
+#        run: |
+#          echo "Push to nexus repository"
+#          mvn jib:build
+#      - name: Deploy on aws
+#        run: |
+#          echo "Deploy on aws"
+
+
+
+name: 31. Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+env:
+  working-directory: 20-maven-java-21-spring-boot
+jobs:
+  build-and-push-to-docker-repository:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.working-directory }}
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Java
+      - uses: actions/checkout@v4
+      - name: Setup Maven and java 21
+        id: setup-deps
+        uses: ./.github/actions/maven-java-21-spring-boot
+
+      # Build the Java application
+      - name: Build with Maven
+        run: mvn clean package
+
+#      - name: Extract artifactId
+#        id: extract-artifactId
+#        run: |
+#          PROJECT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
+#          echo "project_name=$PROJECT_NAME" >> $GITHUB_ENV
+#
+#      - name: Extract version
+#        id: extract-version
+#        run: |
+#          PROJECT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+#          echo "project_version=$PROJECT_VERSION" >> $GITHUB_ENV
+#
+#      - name: Use extracted values
+#        run: |
+#          echo "Artifact ID: ${{ env.project_name }}"
+#          echo "Version: ${{ env.project_version }}"
+
+      - name: Install xq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-pip
+          pip install yq
+
+      - name: Verify xq installation
+        run: xq --version
+      - name: Extract project name from pom.xml
+        id: extract-name
+        run: |
+          PROJECT_NAME=$(cat pom.xml | xq -r '.project.artifactId')
+          echo "Project Name: $PROJECT_NAME"
+          echo "project_name=$PROJECT_NAME" >> $GITHUB_ENV
+
+      - name: Extract project version from pom.xml
+        id: extract-version
+        run: |
+          PROJECT_VERSION=$(cat pom.xml | xq -r '.project.version')
+          echo "Project Version: $PROJECT_VERSION"
+          echo "project_version=$PROJECT_VERSION" >> $GITHUB_ENV
+
+      # Log in to Docker Hub
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      # Build the Docker image
+      - name: Build Docker image
+        run: docker build -t ivosahlik/${{ env.project_name }}:${{ env.project_version }} .
+
+      # Push the Docker image
+      - name: Push Docker image
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.project_name }}:${{ env.project_version }}
+

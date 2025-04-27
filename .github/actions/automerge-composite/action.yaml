@@ -1,0 +1,29 @@
+name: 29-Auto approve PR composite
+description: test
+inputs:
+  secret:
+    description: Secret
+    required: true
+
+outputs:
+  response:
+    description: Whether dependencies were installed or not
+    value: ${{ steps.call-pr-automerge.outputs.response }}
+
+runs:
+  using: composite
+  steps:
+    - name: Call PR Automerge
+      id: call-pr-automerge
+      run: |
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Authorization: Bearer ${{ inputs.secret }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/ivosahlik/github-actions-sample/pulls/${{ github.event.pull_request.number }}/reviews \
+          -d '{"event":"APPROVE", "body": "Approved by GHA workflow: Auto approve test installations"}')
+        
+        echo $RESPONSE
+        
+        echo "response=$RESPONSE" >> $GITHUB_OUTPUT
+
+#        echo "::set-output name=response::$RESPONSE" ## deprecated https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
+      shell: bash

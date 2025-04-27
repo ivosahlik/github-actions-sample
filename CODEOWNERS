@@ -1,0 +1,9 @@
+# This is a comment
+# Specify owners for all files
+*       @ivosahlik
+
+# Specify owners for a specific directory
+.github/  @ivosahlik
+
+# Specify owners for a specific file
+README.md @ivosahlik

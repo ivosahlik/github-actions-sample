@@ -1,0 +1,52 @@
+name: 32. Build and Push Docker Image with Jib
+
+on:
+  push:
+    branches:
+      - main
+env:
+  working-directory: 20-maven-java-21-spring-boot
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ env.working-directory }}
+    steps:
+      # Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Java
+      - uses: actions/checkout@v4
+      - name: Setup Maven and java 21
+        id: setup-deps
+        uses: ./.github/actions/maven-java-21-spring-boot
+
+      - name: Configure Docker credentials
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
+      - name: Extract artifactId
+        id: extract-artifactId
+        run: |
+          PROJECT_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
+          echo "project_name=$PROJECT_NAME" >> $GITHUB_ENV
+
+      - name: Extract version
+        id: extract-version
+        run: |
+          PROJECT_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          echo "project_version=$PROJECT_VERSION" >> $GITHUB_ENV
+
+      - name: Use extracted values
+        run: |
+          echo "Artifact ID: ${{ env.project_name }}"
+          echo "Version: ${{ env.project_version }}"
+
+      - name: Build and push Docker image with Jib
+        run: mvn compile jib:build -Dimage=docker.io/${{ secrets.DOCKER_USERNAME }}/${{ env.project_name }}:${{ env.project_version }}
