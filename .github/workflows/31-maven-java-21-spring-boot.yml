@@ -47,9 +47,10 @@
 name: 31. Build and Push Docker Image
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+#  push:
+#    branches:
+#      - main
 env:
   working-directory: 20-maven-java-21-spring-boot
 jobs:
