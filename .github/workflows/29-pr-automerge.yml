@@ -7,7 +7,7 @@ jobs:
   auto-approve-pr:
     runs-on: ubuntu-latest
     steps:
-      - name: Auto approve PR test
+      - name: Auto approve PR - test
         run: |
           curl -X POST -H "Authorization: Bearer ${{ secrets.GH_TOKEN_PR_AUTOMERGE }}" \
             -H "Accept: application/vnd.github.v3+json" \
