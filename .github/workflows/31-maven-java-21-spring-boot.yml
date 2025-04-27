@@ -101,6 +101,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.project_name }}:${{ env.project_version }}
   deploy-to-aws:
     runs-on: ubuntu-latest
+    needs: build-and-push-to-docker-repository
     steps:
       - name: Deploy on aws
         run: |

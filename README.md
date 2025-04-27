@@ -72,6 +72,7 @@ https://nektosact.com/introduction.html
 * `act -l` - view the execution graph
 * `act -j echo-hello -l` - list actions for specific job
 * `act -j test-composite -s GITHUB_TOKEN_TEST=mockedsecret`
+* `act -j build-and-push-to-docker-repository -P ubuntu-latest=quay.io/jamezp/act-maven`
 
 
 
