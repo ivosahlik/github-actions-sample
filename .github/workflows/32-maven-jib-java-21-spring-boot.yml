@@ -6,6 +6,7 @@ on:
       - main
 env:
   working-directory: 20-maven-java-21-spring-boot
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
