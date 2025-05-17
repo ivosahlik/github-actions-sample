@@ -1,4 +1,4 @@
-
+.
 # Monitoring - add status and badge
 [![01 - Building Blocks](https://github.com/ivosahlik/github-actions-sample/actions/workflows/01-building-blocks.yaml/badge.svg)](https://github.com/ivosahlik/github-actions-sample/actions/workflows/01-building-blocks.yaml)
 
