@@ -1,0 +1,37 @@
+name: 35-slack
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  create-version-pr-or-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a Slack Message when a New Release is Created
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "✅ *<https://github.com/${{github.repository}}/pull/${{ github.event.pull_request.number }}|Version Pull Request>* was updated. Review it and merge it to create a new release and deployment."
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+
+
+
+# https://api.slack.com/
+# Activate Incoming Webhooks
+# https://app.slack.com/
+
+#Sample curl request to post to a channel:
+# curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/<SLACK_TOKEN>
