@@ -1,4 +1,4 @@
-name: 36-slack
+name: 35-slack
 on:
   workflow_dispatch:
   push:
