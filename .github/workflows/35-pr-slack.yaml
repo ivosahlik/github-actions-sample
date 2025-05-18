@@ -1,8 +1,8 @@
 name: 35-slack
 on:
   workflow_dispatch:
-  push:
-    branches: [ main ]
+#  push:
+#    branches: [ main ]
 
 jobs:
   create-version-pr-or-release:
