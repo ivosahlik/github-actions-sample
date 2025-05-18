@@ -1,0 +1,26 @@
+name: CD
+on:
+  workflow_dispatch:
+
+jobs:
+  create-version-pr-or-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send a Slack Message when a New Release is Created
+        uses: slackapi/slack-github-action@v1
+        with:
+          payload: |
+            {
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "⏳Hello Ivo!!!!"
+                  }
+                }
+              ]
+            }
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
