@@ -40,12 +40,12 @@ jobs:
         run: |
           echo "The response code is ${{ steps.call-slack.outputs.response }}"
           if [ ${{ steps.call-slack.outputs.response }} -eq 200 ]; then
-            echo "PR approved"
+            echo "Approved"
           elif [ ${{ steps.call-slack.outputs.response }} -eq 401 ]; then
             echo "Bad credentials"
             exit 1
           else
-            echo "Failed to approve PR. HTTP status code: ${{ steps.call-slack.outputs.response }}"
+            echo "Failed. HTTP status code: ${{ steps.call-slack.outputs.response }}"
             exit 1
           fi
 
