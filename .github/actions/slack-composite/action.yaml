@@ -21,7 +21,7 @@ runs:
           POST \
           -H "Content-type: application/json" \
           ${{ inputs.secret }} \
-          -d '{"text":"Hello, World!"}')
+          -d '{"text":"Hello, Team Building!"}')
                 
         echo $RESPONSE
         
