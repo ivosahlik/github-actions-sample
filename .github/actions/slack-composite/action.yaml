@@ -16,6 +16,9 @@ runs:
     - name: Call slack api
       id: call-slack
       run: |
+        
+        echo ${{ inputs.secret }}
+        
         RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
           -X \ 
           POST \
