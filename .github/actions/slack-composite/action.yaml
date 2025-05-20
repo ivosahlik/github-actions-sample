@@ -16,7 +16,7 @@ runs:
     - name: Call PR Automerge
       id: call-slack
       run: |
-        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" 
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
           -X \ 
           POST \
           -H "Content-type: application/json" \
