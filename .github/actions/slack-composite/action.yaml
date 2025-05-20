@@ -20,7 +20,7 @@ runs:
           -X \ 
           POST \
           -H "Content-type: application/json" \
-          ${{ secrets.SLACK_WEBHOOK_URL }} \
+          ${{ inputs.secret }} \
           -d '{"text":"Hello, World!"}')
                 
         echo $RESPONSE

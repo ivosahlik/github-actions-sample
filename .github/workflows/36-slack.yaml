@@ -34,7 +34,7 @@ jobs:
         id: call-slack
         uses: ./.github/actions/slack-composite
         with:
-          secret: ''
+          secret: ${{ secrets.SLACK_WEBHOOK_URL }}
 
       - name: Use Composite Action Output
         run: |
