@@ -15,15 +15,9 @@ runs:
   steps:
     - name: Call slack api
       id: call-slack
-      run: |
-        
-        echo ${{ inputs.secret }}
-        
-        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
-          -X \ 
-          POST \
-          -H "Content-type: application/json" \
-          ${{ inputs.secret }} \
+      run: |        
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-type: application/json" \
+          https://hooks.slack.com/services/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 \
           -d '{"text":"Hello, Team Building!"}')
                 
         echo $RESPONSE
