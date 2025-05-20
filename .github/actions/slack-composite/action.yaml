@@ -13,7 +13,7 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Call PR Automerge
+    - name: Call slack api
       id: call-slack
       run: |
         RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
