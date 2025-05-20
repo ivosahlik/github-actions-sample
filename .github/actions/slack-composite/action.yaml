@@ -16,7 +16,11 @@ runs:
     - name: Call slack api
       id: call-slack
       run: |        
-        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-type: application/json" \
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST \
+          -H "Content-type: application/json" \
+          -H "Content-Length: 2" \
+          -H "Host: https://hooks.slack.com" \
+          -H "Accept: */*" \
           https://hooks.slack.com/services/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 \
           -d '{"text":"Hello, Team Building!"}')
                 
