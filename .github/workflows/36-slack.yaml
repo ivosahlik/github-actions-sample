@@ -16,7 +16,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "⏳Hello Michaela V.!!!!"
+                    "text": "⏳Hello Team Building!!!!"
                   }
                 }
               ]
@@ -24,6 +24,43 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
+  call-slack-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Call Composite Action
+        id: call-slack
+        uses: ./.github/actions/slack-composite
+        with:
+          secret: ''
+
+      - name: Use Composite Action Output
+        run: |
+          echo "The response code is ${{ steps.call-slack.outputs.response }}"
+          if [ ${{ steps.call-slack.outputs.response }} -eq 200 ]; then
+            echo "PR approved"
+          elif [ ${{ steps.call-slack.outputs.response }} -eq 401 ]; then
+            echo "Bad credentials"
+            exit 1
+          else
+            echo "Failed to approve PR. HTTP status code: ${{ steps.call-slack.outputs.response }}"
+            exit 1
+          fi
+
+      - name: I will be skipped
+        if: ${{ success() }}
+        run: echo "I will print if previous steps succeed."
+      - name: I will execute
+        if: ${{ failure() }}
+        run: echo "I will print if any previous step fails."
+      - name: I will execute
+        if: ${{ !cancelled() }}
+        run: echo "I will always print, except when the workflow is cancelled."
+      - name: I will execute when cancelled
+        if: ${{ cancelled() }}
+        run: echo "I will print if the workflow has been cancelled."
 
 
 

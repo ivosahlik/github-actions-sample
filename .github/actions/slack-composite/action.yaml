@@ -1,0 +1,36 @@
+name: 29-Auto approve PR composite
+description: test
+inputs:
+  secret:
+    description: Secret
+    required: true
+
+outputs:
+  response:
+    description: Whether dependencies were installed or not
+    value: ${{ steps.call-slack.outputs.response }}
+
+runs:
+  using: composite
+  steps:
+    - name: Call PR Automerge
+      id: call-slack
+      run: |
+        RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" 
+          -X \ 
+          POST \
+          -H "Content-type: application/json" \
+          ${{ secrets.SLACK_WEBHOOK_URL }} \
+          -d '{"text":"Hello, World!"}')
+                
+        echo $RESPONSE
+        
+        echo "response=$RESPONSE" >> $GITHUB_OUTPUT
+      shell: bash
+
+# https://api.slack.com/
+# Activate Incoming Webhooks
+# https://app.slack.com/
+
+#Sample curl request to post to a channel:
+# curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/<SLACK_TOKEN>
