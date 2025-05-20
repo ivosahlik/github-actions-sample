@@ -17,7 +17,7 @@ runs:
       id: call-slack
       run: |        
         RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST -H "Content-type: application/json" \
-          https://hooks.slack.com/services/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 \
+          https://hooks.slack.com/services/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 \
           -d '{"text":"Hello, Team Building!"}')
                 
         echo $RESPONSE
