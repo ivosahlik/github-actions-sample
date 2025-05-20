@@ -67,6 +67,7 @@ jobs:
 # https://api.slack.com/
 # Activate Incoming Webhooks
 # https://app.slack.com/
+# https://api.slack.com/quickstart
 
 #Sample curl request to post to a channel:
 # curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/<SLACK_TOKEN>

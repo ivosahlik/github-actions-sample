@@ -1,4 +1,4 @@
-name: 29-Auto approve PR composite
+name: 36 - Slack composite
 description: test
 inputs:
   secret:
