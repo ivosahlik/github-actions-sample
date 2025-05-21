@@ -21,7 +21,7 @@ runs:
           -H "Content-Length: 2" \
           -H "Host: https://hooks.slack.com" \
           -H "Accept: */*" \
-          https://hooks.slack.com/services/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 \
+          https://hooks.slack.com/services/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 \
           -d '{"text":"Hello, Team Building!"}')
                 
         echo $RESPONSE
